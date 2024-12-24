@@ -1,0 +1,168 @@
+/* Button Components */
+.button-primary {
+  background-color: var(--highlight-color);
+  color: var(--white);
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--highlight-color);
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--highlight-color);
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background-color: var(--highlight-color);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+/* Card Components */
+.card {
+  background: linear-gradient(135deg, #1e034b, #4e1a8e) !important; /* Modern gradient */
+  color: var(--text-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(255, 255, 255, 0.1); /* Subtle elevated effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Enables the use of pseudo-elements */
+  overflow: hidden; /* Ensures smooth edges */
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 70%);
+  transform: rotate(25deg);
+  opacity: 0.8;
+  z-index: 0; /* Below card content */
+  transition: transform 1.5s ease;
+}
+
+.card:hover::before {
+  transform: rotate(35deg);
+}
+
+.card-content {
+  position: relative; /* Ensure content stays above background layers */
+  z-index: 1; /* Above the background gradient and effects */
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02); /* Slight hover effect for interactivity */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--highlight-color);
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Modal Components */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  color: var(--highlight-color);
+}
+
+.modal-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Badge Component */
+.badge {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--highlight-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.badge-secondary {
+  background-color: var(--accent-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card {
+      padding: 1.5rem;
+  }
+
+  .button-primary, .button-secondary {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+  }
+
+  .modal {
+      width: 100%;
+      max-width: 90%;
+  }
+}

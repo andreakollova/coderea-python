@@ -1,0 +1,705 @@
+/* General Styles */
+:root {
+  --main-color: #140234; /* Dark purple */
+  --secondary-color: #fe879b; /* Light pink */
+  --highlight-color: #f0359f; /* Hot pink */
+  --accent-color: #6a01f8; /* Bright purple */
+  --white: #ffffff;
+  --antracit: #333333; /* Dark gray */
+  --background-color: var(--main-color);
+  --text-color: var(--white);
+  --button-border-radius: 8px;
+  --card-background: var(--antracit);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* Typography */
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--highlight-color);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+.cta-button {
+  font-size: 1.3rem;
+  text-transform: none;
+  padding: 0.7rem 2rem;
+  color: #fff;
+  background: linear-gradient(90deg, #6902f8, #f1349f);
+  border: none; /* Remove border to avoid clipping issues */
+  border-radius: 20px;
+  position: relative; /* Allow for pseudo-element positioning */
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle border effect */
+  border-radius: 20px; /* Match the button's border radius */
+  pointer-events: none; /* Ensure it doesn’t block clicks */
+}
+
+.cta-button:hover {
+  background: linear-gradient(90deg, #ef36ad, #f8749d);
+  transform: scale(1.05);
+}
+
+
+.show-explanation {
+  font-size: 15px !important; /* Match font size */
+  text-transform: none !important; /* No uppercase transformation */
+  background-color: transparent !important; /* Transparent background */
+  padding: 0.4rem 1rem !important; /* Padding to match "Sign In" */
+  color: #fff !important; /* White text color */
+  border: 2px solid rgba(255, 255, 255, 0.2) !important; /* Subtle border */
+  border-radius: 40px !important; /* Rounded corners matching "Sign In" */
+  cursor: pointer !important; /* Pointer cursor for interactivity */
+  transition: border-color 0.3s ease, transform 0.2s ease !important; /* Smooth transition effects */
+}
+
+.show-explanation:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important; /* Highlight border on hover */
+  transform: scale(1.05) !important; /* Slight enlargement for interaction */
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  position: relative; /* Ensure proper alignment */
+  z-index: 2; /* Ensure buttons stay above other elements */
+  transform: translateY(-10px); /* Move the buttons up */
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--background-color); /* Solid background color */
+  color: var(--white);
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.accent-text {
+  color: var(--accent-color); /* Use your defined accent color */
+}
+
+.accent-gradient-text {
+  background: linear-gradient(90deg, #6a01f8, #f48696, #6a01f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  animation: gradient-flow 3s infinite; /* Adds the animation */
+  background-size: 300%; /* Ensures smooth movement */
+}
+
+/* Keyframes for the flowing gradient */
+@keyframes gradient-flow {
+  0% {
+      background-position: 0%;
+  }
+  50% {
+      background-position: 100%;
+  }
+  100% {
+      background-position: 0%;
+  }
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-background); /* Ensure background applies as intended */
+  color: var(--text-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative; /* Ensure layering for z-index */
+  z-index: 1; /* Prioritize card interactions */
+  pointer-events: auto; /* Ensure it's clickable */
+  overflow: hidden; /* Prevent overflow issues */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--highlight-color);
+  margin-bottom: 0.5rem;
+}
+
+.card-category-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* Align all children to the left */
+  margin: 0 !important; /* Remove any margin */
+  padding: 0 !important; /* Remove any padding */
+}
+
+.card-title {
+  font-size: 1.4rem !important; /* Larger font size */
+  font-weight: 500 !important; /* Smaller font weight */
+  color: var(--white) !important; /* White color */
+  margin-bottom: 0.5rem !important;
+  margin-left: 0 !important; /* Align to the left if necessary */
+}
+
+.card-category {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--white) !important;
+  padding: 0.5rem 1rem !important;
+  border: none !important;
+  border-radius: 40px !important;
+  background: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+  margin: -5px 0 0 0 !important; /* Moves the button up by 5px */
+  position: relative !important;
+  left: -14px !important; /* Optional: Adjust horizontal alignment if needed */
+}
+
+
+.card-category:hover {
+  color: #fd6b90; /* Change text color on hover */
+  transform: translateY(-3px); /* Slight hover effect */
+}
+
+.card-category .category-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.card-content {
+  font-size: 0.9rem !important; /* Smaller font size */
+  line-height: 1.4 !important; /* Adjust line height for better readability */
+  color: var(--text-color) !important;
+  margin-top: 3px !important; /* Move the content up slightly */
+  margin-bottom: 1.5rem !important; /* Keep spacing below consistent */
+}
+
+.show-result {
+  font-size: 15px !important; /* Font size matching "Dashboard" */
+  text-transform: none !important; /* No uppercase transformation */
+  padding: 0.4rem 1rem !important; /* Adjusted padding */
+  background: linear-gradient(90deg, #f8749d, #ef36ad) !important; /* Matching gradient background */
+  color: #fff !important; /* White text color */
+  border: 2px solid rgba(255, 255, 255, 0.2) !important; /* Subtle border similar to "Dashboard" */
+  border-radius: 40px !important; /* Same rounded corners as "Dashboard" */
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important; /* Smooth transitions */
+}
+
+.show-result:hover {
+  background: linear-gradient(90deg, #ef36ad, #f8749d) !important; /* Reverse gradient on hover */
+  transform: scale(1.05) !important; /* Slight enlargement for interaction */
+}
+
+/* Coding Area */
+.coding-area {
+  display: flex;
+  position: relative;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Styling for Line Numbers */
+.coding-area .line-numbers {
+  width: 30px; /* Adjusted to fit up to 3-digit numbers */
+  background-color: #2d2d2d; /* Matches the coding area background */
+  color: #858585; /* Grey color for numbers */
+  text-align: left; /* Align numbers to the left */
+  padding: 5px 5px; /* Horizontal padding */
+  font-family: 'Fira Code', monospace; /* Monospace font for numbers */
+  font-size: 15px; /* Font size matching the coding area */
+  line-height: 1.5rem; /* Matches the line height of the code */
+  border-right: 1px solid #444; /* Separator between line numbers and code */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Individual line number span */
+.coding-area .line-numbers span {
+  display: block;
+  height: 1.5rem; /* Matches the line height of the code */
+  line-height: 1.5rem; /* Consistent spacing for each number */
+  padding-left: 2px; /* Align numbers closer to the left */
+}
+
+
+
+
+textarea {
+  flex-grow: 1;
+  border: none;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  padding: 10px;
+  line-height: 1.5rem; /* Matches line-numbers line height */
+  resize: none;
+  outline: none;
+  margin: 0; /* Remove browser default margin */
+  box-sizing: border-box; /* Include padding in dimensions */
+  overflow-y: auto;
+}
+
+/* Explanation Box */
+.explanation-box {
+  margin-top: 1rem;
+  background-color: #2d2d2d;
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Result Display */
+/* Top Bar for Original and User Code Sections */
+.result-display {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start; /* Align the sections vertically */
+}
+
+.original-code,
+.user-code {
+  width: 50%; /* Increase the width to make the areas wider */
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border-radius: 8px;
+  position: relative; /* Allows the top bar to position correctly */
+  overflow: hidden;
+}
+
+.original-code pre,
+.user-code pre {
+  flex-grow: 1; /* Ensures pre block stretches to fill remaining space */
+}
+
+.original-code .top-bar,
+.user-code .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0; /* Remove extra margin */
+  padding: 0.5rem 1rem; /* Adjust padding */
+  background-color: #2d2d2d;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px 8px 0 0;
+}
+
+.original-code .top-bar {
+  border-bottom: 1px solid #444; /* Optional for better distinction */
+}
+
+.user-code .top-bar {
+  border-bottom: 1px solid #444; /* Optional for better distinction */
+}
+
+.original-code pre,
+.user-code pre {
+  margin: 0;
+  padding: 7px;
+  background-color: #1e1e1e;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem; /* Reduced font size */
+  line-height: 1.4rem; /* Adjusted line height for readability */
+  border-radius: 0 0 8px 8px; /* Keep corners rounded */
+  overflow-x: auto; /* Ensure horizontal scrolling for long lines */
+  color: #d4d4d4; /* Keep consistent text color */
+}
+
+/* Add line numbers styling with top padding */
+/* Styling for Line Numbers */
+.original-code .line-numbers,
+.user-code .line-numbers {
+  width: 30px; /* Ensure the same width for both sections */
+  background-color: #2d2d2d; /* Matches coding area background */
+  color: #858585; /* Grey color for numbers */
+  text-align: right; /* Align numbers to the right */
+  padding: 4px 10px 0 0; /* Add more padding on the right for alignment */
+  font-family: 'Fira Code', monospace; /* Monospace font for numbers */
+  font-size: 0.9rem; /* Match font size to pre area */
+  line-height: 1.4rem; /* Matches the line height of the code */
+  border-right: 1px solid #444; /* Separator between line numbers and code */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Individual line number spans */
+.original-code .line-numbers span,
+.user-code .line-numbers span {
+  display: block;
+  height: 1.4rem; /* Matches the line height of the code */
+  line-height: 1.4rem; /* Consistent spacing for each number */
+  padding-right: 5px; /* Align numbers closer to the right */
+}
+
+
+
+.code-result {
+  display: none;
+}
+
+.back-button {
+  font-size: 15px !important; /* Match font size */
+  text-transform: none !important; /* No uppercase transformation */
+  padding: 0.4rem 1rem !important; /* Match padding */
+  margin-top: 10px;
+  background: linear-gradient(90deg, #f8749d, #ef36ad) !important; /* Matching gradient background */
+  color: #fff !important; /* White text color */
+  border: 2px solid rgba(255, 255, 255, 0.2) !important; /* Subtle border similar to "Show Result" */
+  border-radius: 40px !important; /* Same rounded corners */
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important; /* Smooth transitions */
+}
+
+.back-button:hover {
+  background: linear-gradient(90deg, #ef36ad, #f8749d) !important; /* Reverse gradient on hover */
+  transform: scale(1.05) !important; /* Slight enlargement for interaction */
+}
+
+.code-result {
+  display: flex; /* Ensure the container is visible */
+  position: relative; /* Prevent hiding */
+  z-index: 1; /* Ensure container is interactable */
+  pointer-events: auto;
+}
+
+/* Toggle Switch for Easy Explanation */
+.toggle-container {
+  margin-top: 1rem;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.toggle-label input {
+  display: none;
+}
+
+.slider {
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #ccc;
+  position: relative;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.slider:before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.toggle-label input:checked + .slider {
+  background-color: var(--highlight-color);
+}
+
+.toggle-label input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Preloader */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #140234 !important; /* Fixed background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader {
+  width: 80px;
+  aspect-ratio: 1;
+  border: 10px solid #000;
+  box-sizing: border-box;
+  background: 
+    linear-gradient(#fff 0 0) 2px 50% /10px 20px,
+    linear-gradient(#fff 0 0) 48px 50%/10px 20px,
+    linear-gradient(#000 0 0) center/100% 20px,
+    radial-gradient(farthest-side,#0000 calc(98% - 10px),#fff calc(100% - 10px) 98%,#0000),
+    #000;
+  background-repeat: no-repeat;
+  filter: blur(4px) contrast(10);
+  animation: l15 0.6s infinite alternate;
+}
+
+@keyframes l15 {
+  0%,30% {background-position:2px 50%,48px 50%,center,0 0}
+  100%   {background-position:10px 50%,40px 50%,center,0 0}
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+  }
+
+  .hero-section {
+    padding: 2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .coding-area {
+    flex-direction: column;
+  }
+
+  .line-numbers {
+    display: none; /* Hide line numbers on smaller screens */
+  }
+}
+
+.coding-area {
+  display: flex;
+  position: relative;
+  background-color: #1e1e1e !important; /* Dark background for the coding area */
+  min-height: 300px; /* Ensure consistent height even if the code is short */
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #2d2d2d;
+}
+
+
+textarea {
+  flex-grow: 1; /* Ensure the textarea stretches to fill the container */
+  border: none;
+  background-color: #1e1e1e; /* Ensure the textarea matches the coding area's background */
+  color: #d4d4d4;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  padding: 10px;
+  line-height: 1.5rem; /* Matches line-numbers line height */
+  resize: none;
+  outline: none;
+  margin: 0; /* Remove browser default margin */
+  box-sizing: border-box; /* Include padding in dimensions */
+  overflow-y: auto;
+}
+
+/* Styling for category buttons */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.category-option {
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  color: var(--white) !important; /* Ensure text is white */
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent !important; /* Transparent border */
+  border-radius: 20px !important; /* Desired border radius */
+  background: linear-gradient(#140234, #140234) padding-box, /* Transparent interior */
+              linear-gradient(90deg, #f8749d, #ef36ad) border-box !important; /* Gradient border */
+  background-clip: padding-box, border-box; /* Ensures gradient is only on the border */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: none; /* Keep the text as written */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-icon {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Ensure consistency */
+  object-fit: contain;
+}
+
+.category-option:hover {
+  color: #fd6b90 !important; /* Change text color on hover */
+  transform: translateY(-3px);
+}
+
+
+
+/* Preloader Container */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #140234; /* Matches the site's background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it stays above all other content */
+}
+
+/* Preloader */
+.loader {
+  width: 80px;
+  aspect-ratio: 1;
+  border: 10px solid #000;
+  box-sizing: border-box;
+  background: 
+      linear-gradient(#fff 0 0) 2px 50% /10px 20px,
+      linear-gradient(#fff 0 0) 48px 50%/10px 20px,
+      linear-gradient(#000 0 0) center/100% 20px,
+      radial-gradient(farthest-side,#0000 calc(98% - 10px),#fff calc(100% - 10px) 98%,#0000),
+      #000;
+  background-repeat: no-repeat;
+  filter: blur(4px) contrast(10); 
+  animation: l15 0.6s infinite alternate;
+}
+
+@keyframes l15 {
+  0%,30% {background-position:2px  50%,48px 50%,center,0 0}
+  100%   {background-position:10px 50%,40px 50%,center,0 0}
+}
+/* Top Bar Styles */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #2d2d2d;
+  padding: 0.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  font-size: 13px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.top-bar-text {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.copy-code-btn {
+  background-color: #3e3e3e;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.copy-code-btn:hover {
+  background-color: #565656;
+}
