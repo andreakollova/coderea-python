@@ -373,7 +373,7 @@ const themeIcon = document.getElementById("theme-icon");
 const headerLogo = document.querySelector(".header-logo");
 
 // Set Initial Theme
-const savedTheme = localStorage.getItem("theme") || "light";
+const savedTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", savedTheme);
 updateThemeIcon(savedTheme);
 updateLogo(savedTheme);
